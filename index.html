@@ -82,6 +82,28 @@ footer a{margin:0 8px}footer p{margin:10px auto}
 .gear{columns:2 240px;gap:30px;margin-top:20px;padding-left:20px;color:var(--mu)}.gear li{margin-bottom:8px;break-inside:avoid}
 .day{display:grid;gap:0;margin-top:26px}.day div{display:grid;grid-template-columns:90px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--ln)}.day b{color:var(--ac)}
 @keyframes bl{50%{opacity:.2}}
+.lk{display:flex;gap:6px;flex-wrap:wrap;align-items:center}.mb{display:none;width:46px;height:46px;border-radius:12px;border:1.5px solid var(--ln);background:var(--card);color:var(--tx);font-size:1.4rem;cursor:pointer}
+@media (max-width:760px){
+body{font-size:16px}
+.mb{display:block}
+nav{padding:8px 16px}
+.lk{display:none;width:100%;flex-direction:column;align-items:stretch;gap:2px;padding:6px 0 12px}.lk.open{display:flex;animation:in .25s both}
+nav a.l{padding:13px 14px;font-size:1.05rem;border-radius:12px}
+.w{padding:48px 16px}.hero .w{padding:52px 16px 60px}
+.bars{height:80px}.bars b{min-width:2px}
+.row{flex-direction:column}.row .btn{text-align:center;width:100%}
+.stats{grid-template-columns:1fr 1fr}.stats strong{font-size:2rem}
+.grid{grid-template-columns:1fr;gap:14px}.card{padding:22px}
+.two{gap:28px}
+.demo,.pnl{padding:20px}
+.wf{flex-wrap:nowrap;overflow-x:auto;padding-bottom:8px;margin-inline:-16px;padding-inline:16px;scroll-snap-type:x proximity}.wf .chip{flex:none;scroll-snap-align:start;min-height:44px}
+.chip{min-height:42px}
+.day div{grid-template-columns:62px 1fr;gap:10px}
+.say{height:auto;min-height:2.2em;flex-wrap:wrap;gap:8px}
+.marq div{font-size:1.2rem;gap:28px}
+.gear{columns:1}
+.air{font-size:.75rem}
+}
 @keyframes wv{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
 @keyframes in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 @keyframes mq{to{transform:translateX(-50%)}}
@@ -92,8 +114,9 @@ footer a{margin:0 8px}footer p{margin:10px auto}
 <body>
 <header><nav aria-label="Main menu">
  <a class="logo" href="#home"><i aria-hidden="true"><b></b><b></b><b></b><b></b></i>Swarsetu</a>
+ <button class="mb" id="mb" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="lk">☰</button><div class="lk" id="lk">
  <a class="l" href="#home">Home</a><a class="l" href="#services">Services</a><a class="l" href="#languages">Languages</a><a class="l" href="#studio">Studio</a><a class="l" href="#process">Process</a><a class="l" href="#work">Samples</a><a class="l" href="#pricing">Pricing</a><a class="l" href="#about">About</a>
- <a class="btn" style="padding:8px 20px" href="#contact">Contact us</a>
+ <a class="btn" style="padding:8px 20px;text-align:center" href="#contact">Contact us</a></div>
 </nav></header>
 
 <main>
@@ -259,6 +282,8 @@ function st(i){var s=W[i];wf.querySelectorAll('.chip').forEach(function(c,j){c.s
  p.innerHTML='<div><h3>'+s[0]+'</h3><p>'+s[4]+'</p></div><div><dt>Who</dt><dd>'+s[1]+'</dd><dt>Typical time</dt><dd>'+s[2]+'</dd><dt>Tools</dt><dd>'+s[3]+'</dd></div>'}
 st(0);
 var vu=$('vu');for(var i=0;i<18;i++){var b=document.createElement('b');b.style.animationDelay=(i*.09)%.7+'s';b.style.animationDuration=(.5+Math.abs(Math.sin(i))*.7)+'s';vu.appendChild(b)}
+var mb=$('mb'),lk=$('lk');mb.onclick=function(){var o=lk.classList.toggle('open');mb.setAttribute('aria-expanded',o);mb.textContent=o?'✕':'☰';mb.setAttribute('aria-label',o?'Close menu':'Open menu')};
+lk.addEventListener('click',function(e){if(e.target.closest('a')){lk.classList.remove('open');mb.textContent='☰';mb.setAttribute('aria-expanded',false)}});
 addEventListener('hashchange',route);route();
 </script>
 </body>
